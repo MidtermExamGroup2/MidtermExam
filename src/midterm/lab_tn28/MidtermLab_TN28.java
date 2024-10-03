@@ -8,15 +8,25 @@ package midterm.lab_tn28;
  *
  * @author ASUS
  */
+import java.util.Scanner;
 public class MidtermLab_TN28 {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        int rows;
+        int columns;
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter how many rows of seats: ");
+        rows = scanner.nextInt();
+        System.out.print("Enter how many columns of seats: ");
+        columns = scanner.nextInt();
         
         
-        int[][] airlineSeats = new airlineSeats[row][column];
+        Airplane airplane = new Airplane(rows, columns);
+        
     }
     
 }

@@ -6,13 +6,8 @@ package midterm.lab_tn28;
 
 /**
  *
- * @author ASUS
+ * @author joloos
  */
-public class Business extends Passenger {
+public class Vip_Passenger {
     
-    protected double seatPrice;
-    
-    public Business (String firstName, String lastName, int age, double seatPrice) {
-        super(firstName, lastName, age);
-    }
 }

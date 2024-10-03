@@ -13,23 +13,38 @@ public class Passenger {
     protected String firstName;
     protected String lastName;
     protected int age;
+    protected boolean isBooked;
+    protected int ticketPrice;
+    protected String ticketType; //Economy or Business
+    protected int seatRow;
+    protected int seatColumn;
     
-    public Passenger (String firstName, String lastName, int age) {
-        
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
+    Passenger(){
+        this.firstName = "John";
+        this.lastName =  "Doe";
+        this.age = -1;
+        this.isBooked = false;
+        this.ticketPrice = 0;
+        this.ticketType = "N/A";
+        this.seatRow = -1;
+        this.seatColumn = -1;
     }
     
-    public void reserveSeat();
-    public void cancelBooking();
-    public void checkAvailability(boolean[][] seats, int row, int column) {
-        
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j < column; j++) {
-                if (seats[i][j] != 0)
-            }
+    public void displayDetails(){
+        System.out.println("-------------------");
+        System.out.println("Name: " + firstName + " " + lastName);
+        System.out.println("Age: " + age);
+        System.out.println("Booking Status: " + isBooked);
+        if(isBooked){
+        System.out.println("Ticket Type: " + ticketType);
+        System.out.println("Ticket Price: " + ticketPrice);
+        System.out.println("Seat: Row " + seatRow + " Column " + seatColumn);
         }
+        System.out.println("-------------------");
     }
+    
+    
+    
+    
     
 }
