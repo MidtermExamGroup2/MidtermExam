@@ -12,7 +12,7 @@ public class Airplane {
   private int[][] seats;
   
   Airplane(int rows, int columns){
-      seats = new int[rows][columns];
+      this.seats = new int[rows][columns];
   }
   public void displaySeats(){
       System.out.println("Seat Layout: ");
@@ -39,8 +39,11 @@ public class Airplane {
       }
       
   }
-  public void isSeatAvailable(int seatRow, int seatColumn){
-      
-  }
+  public bool isSeatAvailable(int seatRow, int seatColumn){
+      if(seats[seatRow][seatColumn] == 1){
+          return true;
+      }
+      else
+          return false;
   
 }
