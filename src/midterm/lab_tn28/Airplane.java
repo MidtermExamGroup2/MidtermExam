@@ -39,11 +39,13 @@ public class Airplane {
       }
       
   }
-  public bool isSeatAvailable(int seatRow, int seatColumn){
+  public boolean isSeatAvailable(int seatRow, int seatColumn){
       if(seats[seatRow][seatColumn] == 1){
           return true;
       }
       else
           return false;
+  }
   
 }
+  
