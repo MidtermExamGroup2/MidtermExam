@@ -11,5 +11,6 @@ package midterm.lab_tn28;
 public class testing {
     public static void main(String[] args) {
         System.out.println("Hello World");
+        System.out.println("Hello World");
     }
 }
