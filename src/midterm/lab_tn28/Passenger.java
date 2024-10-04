@@ -30,6 +30,7 @@ public class Passenger {
         this.seatColumn = -1;
     }
     
+    //Display Passenger Details
     public void displayDetails(){
         System.out.println("-------------------");
         System.out.println("Name: " + firstName + " " + lastName);
@@ -38,28 +39,79 @@ public class Passenger {
         if(isBooked){
         System.out.println("Ticket Type: " + ticketType);
         System.out.println("Ticket Price: " + ticketPrice);
-        System.out.println("Seat: Row " + seatRow + " Column " + seatColumn);
+        System.out.println("Seat: Row " + (++seatRow) + " Column " + (++seatColumn));
         }
         System.out.println("-------------------");
     }
     
-    public void reserveSeat(int userRow, int userColumn, int userTicketPrice, String userTicketType){
+    //Reserve a seat
+    public void reserveSeat(int userRow, int userColumn, String userTicketType, Airplane airplane){
         this.seatRow = userRow;
-        this.seatColumn = seatColumn;
-        this.ticketPrice = userTicketPrice;
+        this.seatColumn = userColumn;
+        airplane.setSeatStatus(userRow, userColumn, 1);
+        
+        if(userTicketType.equals("Business"))
+        this.ticketPrice = 500;
+
+        if(userTicketType.equals("Economy"))
+        this.ticketPrice = 200;
+        
+        this.isBooked = true;
         this.ticketType = userTicketType;
+        
     }
     
     public void cancelBooking(){
-        if(ticketType == "N/A"){
+        if(ticketType.equals("N/A")){
             System.out.println("This person is not booked");
         }else{
         this.seatRow = -1;
         this.seatColumn = -1;
         this.ticketPrice = 0;
         this.ticketType = "N/A";
+        this.isBooked = false;
         System.out.println("Booking Cancelled.");
         }
     }
-
+    
+    public void setFirstName(String userFirstName){
+        this.firstName = userFirstName;
+    }
+    
+    public void setLastName(String userLastName){
+        this.lastName = userLastName;
+    }
+    
+    public void setAge(int userAge){
+        this.age = userAge;
+    }
+    
+    public String getFirstName(){
+        return firstName;
+    }
+    
+    public String getLastName(){
+        return lastName;
+    }
+    
+    public int getAge(){
+        return age;
+    }
+    
+    public void setRow(int userRow){
+        seatRow = userRow;
+    }
+    
+    public void setColumn(int userColumn){
+        seatColumn = userColumn;
+    }
+    
+    public int getRow(){
+        return seatRow;
+    }
+    
+    public int getColumn(){
+        return seatColumn;
+    }
+    
 }

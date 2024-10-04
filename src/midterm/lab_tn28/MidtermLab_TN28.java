@@ -17,6 +17,8 @@ public class MidtermLab_TN28 {
     public static void main(String[] args) {
         int rows;
         int columns;
+        int passengerIndex = 0;
+        int passengerCount = 100;
         Scanner scanner = new Scanner(System.in);
         
         System.out.print("Enter how many rows of seats: ");
@@ -26,7 +28,169 @@ public class MidtermLab_TN28 {
         
         
         Airplane airplane = new Airplane(rows, columns);
+        Passenger passenger[] = new Passenger[passengerCount];
         
+        
+        
+        while(true){
+            System.out.println();
+            System.out.println("[1] View Airplane Seats");
+            System.out.println("[2] Check if seat is available");
+            System.out.println("[3] Create new Passenger");
+            System.out.println("[4] Passenger Menu");
+            System.out.print("Choice: ");
+            
+            int choice = scanner.nextInt();
+            switch(choice){
+                case 1:
+                    airplane.displaySeats();
+                    System.out.println();
+                    System.out.println("Press Enter to Continue...");
+                    scanner.nextLine();
+                    scanner.nextLine();
+                    break;  
+                
+                case 2:
+                    int userRow;
+                    int userColumn;
+                    String userFirstName;
+                    String userLastName;
+                    int userAge;
+                            
+                    System.out.print("Enter seat row: ");
+                    userRow = scanner.nextInt();
+                    System.out.print("Enter seat column: ");
+                    userColumn = scanner.nextInt();
+                    
+                    if(airplane.isSeatAvailable(--userRow, --userColumn)){
+                        System.out.println("Seat is Available.");
+                        System.out.println("Press enter to continue...");
+                        scanner.nextLine();
+                        scanner.nextLine();
+                                }
+                        else{
+                        System.out.println("Seat not available.");
+                        System.out.println("Press enter to continue...");
+                        scanner.nextLine();
+                        scanner.nextLine();
+                                }
+                    break;
+                    
+                case 3:
+                    scanner.nextLine(); // Consume the newline left-over
+                    System.out.print("Enter First Name: ");
+                    userFirstName = scanner.nextLine(); // Correctly read the first name
+
+                    System.out.print("Enter Last Name: ");
+                    userLastName = scanner.nextLine(); // Correctly read the last name
+
+                    System.out.print("Enter Age: ");
+                    userAge = scanner.nextInt();
+
+                    // Create a new Passenger and set details
+                    Passenger newPassenger = new Passenger();
+                    newPassenger.setFirstName(userFirstName);
+                    newPassenger.setLastName(userLastName);
+                    newPassenger.setAge(userAge);
+
+                    passenger[passengerIndex] = newPassenger; // Store the passenger
+                    passengerIndex++;
+                    System.out.println("Passenger created...");
+                    break;
+                    
+                case 4: 
+                    int foundUserIndex = -1;
+                    boolean isPassengerFound = false;
+                    scanner.nextLine();
+                    System.out.print("Enter Last Name of existing Passenger: ");
+                    userLastName = scanner.nextLine();
+                    
+                    for(int i = 0; i < passengerCount; i++){
+                        if(passenger[i] != null && passenger[i].getLastName().equalsIgnoreCase(userLastName)){
+                            isPassengerFound = true;
+                            foundUserIndex = i;
+                            System.out.println("Passenger Found");
+                            break;
+                        }
+                    }
+                    if(isPassengerFound){
+                    while(true){
+                    System.out.println("-------------------");
+                    System.out.println("[1] Display Passenger Details");
+                    System.out.println("[2] Reserve Booking");
+                    System.out.println("[3] Cancel Booking");
+                    System.out.println("[4] Exit");
+                    System.out.println("-------------------");
+                    System.out.print("Choice: ");
+                    choice = scanner.nextInt();
+                    
+                    switch(choice){
+                        case 1: //Display Passenger Details
+                            passenger[foundUserIndex].displayDetails();
+                            break;
+                            
+                        case 2: //Reserve Seat
+                            String userTicketType;
+                            
+                            System.out.print("Enter seat row: ");
+                            userRow = scanner.nextInt();
+                            
+                            System.out.print("Enter Seat Column: ");
+                            userColumn = scanner.nextInt();
+                            
+                            if(!airplane.isSeatAvailable(--userRow, --userColumn)){
+                                System.out.println("Seat not available");
+                                System.out.println("Press enter to continue...");
+                                scanner.nextLine();
+                                scanner.nextLine();
+                            }
+                                
+                            
+                            System.out.println("[1] Business");
+                            System.out.println("[2] Economy");
+                            System.out.print("Choice: ");
+                            choice = scanner.nextInt();
+                            switch(choice){
+                                case 1: 
+                                    userTicketType = "Business";
+                                    break;
+                                    
+                                case 2:
+                                    userTicketType = "Economy";
+                                    break;
+                                    
+                                default:
+                                    userTicketType = "Default";
+                                    break;
+                            }
+                            if(userTicketType.equals("Default")){
+                                break;
+                            }
+                            passenger[foundUserIndex].reserveSeat(userRow, userColumn, userTicketType, airplane);
+                            
+                            System.out.println("Reserved Seat Successfully.");
+                            break;
+                            
+                        case 3:
+                            userRow = passenger[foundUserIndex].getRow();
+                            userColumn = passenger[foundUserIndex].getColumn();
+                            airplane.setSeatStatus(userRow, userColumn, 0);
+                            passenger[foundUserIndex].setRow(-1);
+                            passenger[foundUserIndex].setColumn(-1);
+                            break;
+                       
+                        case 4: 
+                            break;
+                        }
+                    if(choice==4)
+                    break;
+                    }    
+                }
+                  break;
+                  
+
+            }
+        }
     }
     
 }
