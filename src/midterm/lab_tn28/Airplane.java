@@ -6,16 +6,16 @@ package midterm.lab_tn28;
 
 /**
  *
- * @author ASUS
+ * @author Group2-TN28
  */
 public class Airplane {
-  private int[][] seats; //1 for reserved. 0 for not
+  private int[][] seats; //1 for reserved, 0 for not
   
   Airplane(int rows, int columns){
       this.seats = new int[rows][columns];
   }
   
-  //Display the seats
+  //Displaying the seats in a formatted manner
   public void displaySeats(){
       System.out.println("Seat Layout: ");
       System.out.println("Rows: " + seats.length);
@@ -39,7 +39,7 @@ public class Airplane {
                 System.out.print(" X |"); // Reserved seat
             }
         }
-        System.out.println(); // Move to the next line after printing the row
+        System.out.println(); // Move to next line after printing the row
     }
       
   }
@@ -53,9 +53,9 @@ public class Airplane {
           return false;
   }
   
+  //Setter for seats.  1 for reserved, 0 for not.
   public void setSeatStatus(int seatRow, int seatColumn, int status){
       this.seats[seatRow][seatColumn] = status;
   }
-  
 }
   
