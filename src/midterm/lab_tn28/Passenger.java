@@ -43,8 +43,23 @@ public class Passenger {
         System.out.println("-------------------");
     }
     
+    public void reserveSeat(int userRow, int userColumn, int userTicketPrice, String userTicketType){
+        this.seatRow = userRow;
+        this.seatColumn = seatColumn;
+        this.ticketPrice = userTicketPrice;
+        this.ticketType = userTicketType;
+    }
     
-    
-    
-    
+    public void cancelBooking(){
+        if(ticketType == "N/A"){
+            System.out.println("This person is not booked");
+        }else{
+        this.seatRow = -1;
+        this.seatColumn = -1;
+        this.ticketPrice = 0;
+        this.ticketType = "N/A";
+        System.out.println("Booking Cancelled.");
+        }
+    }
+
 }
