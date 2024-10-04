@@ -81,15 +81,15 @@ public class MidtermLab_TN28 {
                 case 3://Create new Passenger
                     scanner.nextLine(); // Consume the newline left-over
                     System.out.print("Enter First Name: ");
-                    userFirstName = scanner.nextLine(); // Correctly read the first name
+                    userFirstName = scanner.nextLine(); //  read the first name
 
                     System.out.print("Enter Last Name: ");
-                    userLastName = scanner.nextLine(); // Correctly read the last name
+                    userLastName = scanner.nextLine(); //  read the last name
 
                     System.out.print("Enter Age: ");
                     userAge = scanner.nextInt();
 
-                    // Create a new Passenger and set details
+                    // Create a new Passenger and set attributes
                     Passenger newPassenger = new Passenger();
                     newPassenger.setFirstName(userFirstName);
                     newPassenger.setLastName(userLastName);
@@ -102,10 +102,10 @@ public class MidtermLab_TN28 {
                 case 4:
                     scanner.nextLine(); // Consume the newline left-over
                     System.out.print("Enter First Name: ");
-                    userFirstName = scanner.nextLine(); // Correctly read the first name
+                    userFirstName = scanner.nextLine(); //  read the first name
 
                     System.out.print("Enter Last Name: ");
-                    userLastName = scanner.nextLine(); // Correctly read the last name
+                    userLastName = scanner.nextLine(); //  read the last name
 
                     System.out.print("Enter Age: ");
                     userAge = scanner.nextInt();
@@ -203,7 +203,7 @@ public class MidtermLab_TN28 {
                             System.out.println("Reserved Seat Successfully.");
                             break;
                             
-                        case 3:
+                        case 3://Cancel Booking
                             userRow = passenger[foundUserIndex].getRow();
                             userColumn = passenger[foundUserIndex].getColumn();
                             airplane.setSeatStatus(userRow, userColumn, 0);
@@ -214,17 +214,17 @@ public class MidtermLab_TN28 {
                         case 4: 
                             break;
                         }
-                    if(choice==4)
+                    if(choice==4)//If choice = 4 then exit out of the infinite loop
                     break;
                     }    
                 }
                   break;
                   
-                case 6:
+                case 6://If choice = 6 then exit out of the switch
                     break;
 
             }
-            if(choice==6){
+            if(choice==6){//If choice = 6 then exit out of the infinite loop
                 break;
             }
         }
