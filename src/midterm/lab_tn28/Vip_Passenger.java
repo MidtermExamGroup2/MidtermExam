@@ -12,7 +12,7 @@ public class Vip_Passenger extends Passenger{
     private int vipCharge;
     Vip_Passenger(){
         super();
-        vipCharge = 0;
+        this.vipCharge = 100;
     }
     
     public void displayDetails(){
@@ -23,7 +23,7 @@ public class Vip_Passenger extends Passenger{
         if(isBooked){
         System.out.println("Ticket Type: " + ticketType);
         System.out.println("Ticket Price: " + ticketPrice);
-        System.out.println("Seat: Row " + seatRow + " Column " + seatColumn);
+        System.out.println("Seat: Row " + (++seatRow) + " Column " + (++seatColumn));
         System.out.println("Vip Charge: "+ vipCharge);
         }
         System.out.println("-------------------");
