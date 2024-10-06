@@ -99,31 +99,14 @@ public class Passenger {
         this.age = userAge;
     }
     
-    //setter for seatRow
+    //Setter for seatRow
     public void setRow(int userRow){
         seatRow = userRow;
     }
     
-    //setter for seatColumn
+    //Setter for seatColumn
     public void setColumn(int userColumn){
         seatColumn = userColumn;
-    }
-    
-    //getter for firstName
-    public String getFirstName(){
-        return firstName;
-    }
-    
-    
-    
-    //getter for lastName
-    public String getLastName(){
-        return lastName;
-    }
-    
-    //getter for age
-    public int getAge(){
-        return age;
     }
     
     /**
@@ -140,4 +123,18 @@ public class Passenger {
         return seatColumn;
     }
     
+    //getter for firstName
+    public String getFirstName(){
+        return firstName;
+    }
+
+    //getter for lastName
+    public String getLastName(){
+        return lastName;
+    }
+    
+    //getter for age
+    public int getAge(){
+        return age;
+    }
 }
