@@ -1,23 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package midterm.lab_tn28;
 
 /**
- *
- * @author ASUS
+ * @author Group2-TN28
+ * The Main Class for the Airplane Seat Reservation System.
+ * 
+ * Allows users to view seats, check availability, and manage passenger seat reservations.
+ * 
+ * Features:
+ * View Airplane Seats
+ * Check if a seat is available
+ * Create new Passenger(Regular or VIP)
+ * Access Passenger Menu for booking and cancellation
+ * 
  */
 import java.util.Scanner;
 public class MidtermLab_TN28 {
-
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String[] args) {
         int rows;
         int columns;
-        int passengerIndex = 0;
+        int passengerIndex = 0; 
         int passengerCount = 100;
         Scanner scanner = new Scanner(System.in);
         
@@ -31,7 +33,7 @@ public class MidtermLab_TN28 {
         Passenger passenger[] = new Passenger[passengerCount];
         
         
-        
+        //Loop for the Main Menu
         while(true){
             System.out.println();
             System.out.println("[1] View Airplane Seats");
@@ -87,7 +89,7 @@ public class MidtermLab_TN28 {
                     userLastName = scanner.nextLine(); //  read the last name
 
                     System.out.print("Enter Age: ");
-                    userAge = scanner.nextInt();
+                    userAge = scanner.nextInt(); //read age
 
                     // Create a new Passenger and set attributes
                     Passenger newPassenger = new Passenger();
@@ -95,11 +97,14 @@ public class MidtermLab_TN28 {
                     newPassenger.setLastName(userLastName);
                     newPassenger.setAge(userAge);
 
-                    passenger[passengerIndex] = newPassenger; // Store the passenger
+                    // Store the newPassenger object to the passenger array with respect to the passengerIndex.
+                    //Increment passengerIndex after.
+                    passenger[passengerIndex] = newPassenger; 
                     passengerIndex++;
                     System.out.println("Passenger created...");
                     break;
-                case 4:
+                    
+                case 4: // Create new VIP-Passenger
                     scanner.nextLine(); // Consume the newline left-over
                     System.out.print("Enter First Name: ");
                     userFirstName = scanner.nextLine(); //  read the first name
@@ -116,11 +121,14 @@ public class MidtermLab_TN28 {
                     newVipPassenger.setLastName(userLastName);
                     newVipPassenger.setAge(userAge);
 
-                    passenger[passengerIndex] = newVipPassenger; // Store the passenger
+                    // Store the newVipPassenger object to the passenger array with respect to the passengerIndex.
+                    //Increment passengerIndex after.
+                    passenger[passengerIndex] = newVipPassenger;
                     passengerIndex++;
                     System.out.println("Passenger created...");
                     break;
-                case 5: 
+                    
+                case 5: //Passenger Menu
                     int foundUserIndex = -1;
                     boolean isPassengerFound = false;
                     scanner.nextLine();
@@ -128,6 +136,8 @@ public class MidtermLab_TN28 {
                     userLastName = scanner.nextLine();
                     
                     for(int i = 0; i < passengerCount; i++){
+                        //Condition only runs if the object has been instantiated and if the inputted last name exists.
+                        //Sets isPassengerFound to true and sets the foundUserIndex to the index of the found user.
                         if(passenger[i] != null && passenger[i].getLastName().equalsIgnoreCase(userLastName)){
                             isPassengerFound = true;
                             foundUserIndex = i;
@@ -135,8 +145,8 @@ public class MidtermLab_TN28 {
                             break;
                         }
                     }
-                    if(isPassengerFound){
-                    while(true){
+                    if(isPassengerFound){ //Only runs if Passenger is Found
+                    while(true){ //Loop for the Passenger Menu
                     System.out.println("-------------------");
                     System.out.println("[1] Display Passenger Details");
                     System.out.println("[2] Reserve Booking");
@@ -160,15 +170,13 @@ public class MidtermLab_TN28 {
                                 System.out.println("Out of Bounds");
                                 break;
                             }
-                                
-                            
                             System.out.print("Enter Seat Column: ");
                             userColumn = scanner.nextInt();
                             if(userColumn>columns){
                                 System.out.println("Out of Bounds");
                                 break;
                             }
-                            
+                            //Displays if seat is not available
                             if(!airplane.isSeatAvailable(--userRow, --userColumn)){
                                 System.out.println("Seat not available");
                                 System.out.println("Press enter to continue...");
@@ -176,12 +184,12 @@ public class MidtermLab_TN28 {
                                 scanner.nextLine();
                                 break;
                             }
-                                
-                            
+                            //Displays the types of ticket a Passenger can book
                             System.out.println("[1] Business");
                             System.out.println("[2] Economy");
                             System.out.print("Choice: ");
                             choice = scanner.nextInt();
+                            //Sets the userTicketType string to the correct value based on the user's choice
                             switch(choice){
                                 case 1: 
                                     userTicketType = "Business";
@@ -198,6 +206,7 @@ public class MidtermLab_TN28 {
                             if(userTicketType.equals("Default")){
                                 break;
                             }
+                            //Calls reserveSeat function of Passenger instance while passing the given arguments
                             passenger[foundUserIndex].reserveSeat(userRow, userColumn, userTicketType, airplane);
                             
                             System.out.println("Reserved Seat Successfully.");
@@ -211,23 +220,22 @@ public class MidtermLab_TN28 {
                             passenger[foundUserIndex].setColumn(-1);
                             break;
                        
-                        case 4: 
+                        case 4:  //Exit out of the Passenger Menu switch
                             break;
                         }
-                    if(choice==4)//If choice = 4 then exit out of the infinite loop
+                    if(choice==4)//If choice = 4 then exit out of the Passenger Menu Loop
                     break;
                     }    
                 }
                   break;
                   
-                case 6://If choice = 6 then exit out of the switch
+                case 6://If choice = 6 then exit out of the Main Menu Switch
                     break;
 
             }
-            if(choice==6){//If choice = 6 then exit out of the infinite loop
+            if(choice==6){//If choice = 6 then exit out of the Main Menu loop
                 break;
             }
         }
     }
-    
 }

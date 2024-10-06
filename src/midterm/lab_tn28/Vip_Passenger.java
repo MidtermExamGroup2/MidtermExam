@@ -5,16 +5,20 @@
 package midterm.lab_tn28;
 
 /**
- *
- * @author joloos
+ *This class is a subtype of the passenger class.
+ * VIP Passengers have an additional VIP charge.
+ * @author Group2-TN28
  */
 public class Vip_Passenger extends Passenger{
     private int vipCharge;
+    
+    //Constructor
     Vip_Passenger(){
         super();
         this.vipCharge = 100;
     }
     
+    //Override for the displayDetails method to include VIP Charges.
     public void displayDetails(){
         System.out.println("-------------------");
         System.out.println("Name: " + firstName + " " + lastName);

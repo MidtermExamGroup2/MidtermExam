@@ -5,8 +5,12 @@
 package midterm.lab_tn28;
 
 /**
- *
- * @author ASUS
+ * @author Group2-TN28
+ * This class represents a Passenger on a plane.
+ * Stores necessary information such as first name, last name, and age, ticket type and booking status.
+ * 
+ * Provides methods to reserve and cancel seat bookings
+ * 
  */
 
 public class Passenger {
@@ -19,6 +23,7 @@ public class Passenger {
     protected int seatRow;
     protected int seatColumn;
     
+    //Constructor
     Passenger(){
         this.firstName = "John";
         this.lastName =  "Doe";
@@ -44,7 +49,7 @@ public class Passenger {
         System.out.println("-------------------");
     }
     
-    //Reserve a seat
+    //Reserving a seat
     public void reserveSeat(int userRow, int userColumn, String userTicketType, Airplane airplane){
         this.seatRow = userRow;
         this.seatColumn = userColumn;
@@ -61,6 +66,7 @@ public class Passenger {
         
     }
     
+    //Cancelling a booking
     public void cancelBooking(){
         if(ticketType.equals("N/A")){
             System.out.println("This person is not booked");
@@ -74,44 +80,61 @@ public class Passenger {
         }
     }
     
+    /**
+     * Setter
+     */
+    
+    //Setter for firstName
     public void setFirstName(String userFirstName){
         this.firstName = userFirstName;
     }
     
+    //Setter for lastName
     public void setLastName(String userLastName){
         this.lastName = userLastName;
     }
     
+    //Setter for setAge
     public void setAge(int userAge){
         this.age = userAge;
     }
     
-    public String getFirstName(){
-        return firstName;
-    }
-    
-    public String getLastName(){
-        return lastName;
-    }
-    
-    public int getAge(){
-        return age;
-    }
-    
+    //Setter for seatRow
     public void setRow(int userRow){
         seatRow = userRow;
     }
     
+    //Setter for seatColumn
     public void setColumn(int userColumn){
         seatColumn = userColumn;
     }
     
+    /**
+     * Getter
+     */
+    
+    //getter for seatRow
     public int getRow(){
         return seatRow;
     }
     
+    //getter for seatColumn
     public int getColumn(){
         return seatColumn;
     }
     
+    //getter for firstName
+    public String getFirstName(){
+        return firstName;
+    }
+
+    //getter for lastName
+    public String getLastName(){
+        return lastName;
+    }
+    
+    //getter for age
+    public int getAge(){
+        return age;
+    }
 }
