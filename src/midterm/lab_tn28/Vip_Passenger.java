@@ -29,6 +29,7 @@ public class Vip_Passenger extends Passenger{
         System.out.println("Ticket Price: " + ticketPrice);
         System.out.println("Seat: Row " + (++seatRow) + " Column " + (++seatColumn));
         System.out.println("Vip Charge: "+ vipCharge);
+            System.out.println("Total Ticket Price: " + (ticketPrice+vipCharge));
         }
         System.out.println("-------------------");
     }
