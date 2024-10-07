@@ -213,7 +213,11 @@ public class MidtermLab_TN28 {
                             break;
                             
                         case 3://Cancel Booking
+                            userRow = passenger[foundUserIndex].getRow();
+                            userColumn = passenger[foundUserIndex].getColumn();
+
                             passenger[foundUserIndex].cancelBooking();
+                            airplane.setSeatStatus(userRow, userColumn, 0);
                             break;
                        
                         case 4:  //Exit out of the Passenger Menu switch
