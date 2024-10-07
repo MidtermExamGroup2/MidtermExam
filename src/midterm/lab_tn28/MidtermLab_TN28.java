@@ -39,7 +39,7 @@ public class MidtermLab_TN28 {
             System.out.println("[1] View Airplane Seats");
             System.out.println("[2] Check if seat is available");
             System.out.println("[3] Create new Passenger");
-            System.out.println("[4]Create new VIP Passenger");
+            System.out.println("[4] Create new VIP Passenger");
             System.out.println("[5] Passenger Menu");
             System.out.println("[6] Exit");
             System.out.print("Choice: ");
@@ -166,13 +166,13 @@ public class MidtermLab_TN28 {
                             
                             System.out.print("Enter seat row: ");
                             userRow = scanner.nextInt();
-                            if(userRow>rows){
+                            if(userRow>rows || userRow<=0){
                                 System.out.println("Out of Bounds");
                                 break;
                             }
                             System.out.print("Enter Seat Column: ");
                             userColumn = scanner.nextInt();
-                            if(userColumn>columns){
+                            if(userColumn>columns || userRow<=0){
                                 System.out.println("Out of Bounds");
                                 break;
                             }
