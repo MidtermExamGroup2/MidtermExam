@@ -94,7 +94,7 @@ public class Passenger {
         this.lastName = userLastName;
     }
     
-    //Setter for setAge
+    //Setter for Age
     public void setAge(int userAge){
         this.age = userAge;
     }
