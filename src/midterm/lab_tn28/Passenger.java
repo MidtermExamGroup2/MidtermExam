@@ -56,10 +56,10 @@ public class Passenger {
         airplane.setSeatStatus(userRow, userColumn, 1);
         
         if(userTicketType.equals("Business"))
-        this.ticketPrice = 300;
+        this.ticketPrice = 500;
 
         if(userTicketType.equals("Economy"))
-        this.ticketPrice = 500;
+        this.ticketPrice = 300;
         
         this.isBooked = true;
         this.ticketType = userTicketType;
